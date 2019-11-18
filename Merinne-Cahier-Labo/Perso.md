@@ -1,8 +1,12 @@
 ### Lundi 18/11/2019
 **Matin**  
-Clé + présentation du projet + impression des articles de biblio(HD général, DB specific, thesis). Mise au point sur les données disponibles & methodes d'analyses (SYCER, HOMER). (Feuille de note papier)  
-Lecture de l'article *Cell-type specific gene epxression profiling in Adult mouse brain reveals normal and disease-state signatures*  
+* Clé + présentation du projet + impression des articles de biblio(HD général, DB specific, thesis). Mise au point sur les données disponibles & methodes d'analyses (SYCER, HOMER). (Feuille de note papier)  
+* Lecture de l'article *Cell-type specific gene epxression profiling in Adult mouse brain reveals normal and disease-state signatures*  
 
 **Après-midi**  
-Fin lecture premier article  
-Lecture de l'article "Huntington disease" Gillian P. Bates, PRIMER  
+* Fin lecture premier article  
+* Lecture de l'article "Huntington disease" Gillian P. Bates, PRIMER  
+* Lecture de l'article "The pathobiology of perturbed mutant Huntingtin protein-protein interactions in Huntington's diseases", E. Wanker  
+* Mise à plat des problématiques et des analyses possible dans le cadre du projet dans le cahier Projet.md
+* Lecture de partie de la thèse de Caroline Lotz: "Rôle des altérations transcriptionnelles et épigénétiques dans le déficits comportementaux de la maladie de Huntington"
+* 

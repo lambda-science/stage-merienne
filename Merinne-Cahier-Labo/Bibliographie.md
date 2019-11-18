@@ -33,3 +33,23 @@ Abnormal mHTT - cellular prot interaction:
 wtHTT bind transcription factors = gene expression regulator  
 Binding of trascriptionnal activator such a SP1 & repressor such as RE-1  
 mHTT: bind more strongly to SP1. mHTT repress SP1-dep transcription
+Abnormal homotypic mHTT interaction: aggregates that perturb cellular functions 
+Aggregates: sequester quality control prot (ubiquitin, chaperone, 26S proteasome)  
+
+```
+"Striatal selectivity of HD may be explained by binding of mHTT to proteins that are predominantly expressed in this brain region"
+```
+### Article 4: Thèse de Caroline Lotz: "Rôle des altérations transcriptionnelles et épigénétiques dans le déficits comportementaux de la maladie de Huntington"
+**Dérégulation transcriptionnelle**  
+Amplitude déréulation transcriptionnelles dépend du nb ce CAG. Particulièrement étendue dans le striatum. Gène d'identité des neurones striataux: largement sous exprimés chez HD: *Drd1, Drd2, Darpp32, PPP1R1B, Pde10a*  : fonction neuronaux = C. NEURONAUX  
+Sur-exprimé: moins robuste, fonctions adhésion Cellulaire.   = C. GLIALE  
+Création de mécanismes compensatoires  
+Interaction mHTT avec TF. (comme la CBP)  
+
+**Altérations épigénétiques**
+H3K27ac spécifiquement enrichie au niveau des enhancers actifs  
+Les genes de neuronnes sous régulés en HD, sont régulés par des super-enhancers = des enhancers vastes enrichis en H3K27ac qui couvrent les gènes qu'ils régulent.  
+Baisse de H3K27ac à ces enhancers (et pol II) chez souris R6.  
+H3K4me3 associé promoteurs actifs, participent sous reg de l'identité neuronal -> ces gènes ont une signature en H3K4me3 large similaire a H3K26ac  
+Moins de H3K27ac -> lié à séquestration de CBP ? (car substrat)  
+H3K27me3: marque repression à activité augmenté dans HD.
