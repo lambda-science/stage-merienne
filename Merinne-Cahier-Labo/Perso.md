@@ -12,3 +12,11 @@
 
 ### Mardi 19/11/2019
 **Matin**  
+* Creation de script permettant de générer des volcano plot à partir de nos données d'exemples
+* Adaptation de ce script sous forme de fonction ré-utilisable
+
+**Après-midi** 
+* Fin script Volcano plot
+* Réunion de groute avec Karine, Johnattan, Raphael
+* Début de script biomaRt pour convertir nos gènes humains en gènes de sourie
+* GLT astrocytes ; Cx3: Microglie. Récupération des fichiers cell-type spec, tentative de merge.

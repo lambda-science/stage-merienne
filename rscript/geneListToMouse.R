@@ -1,10 +1,13 @@
 library(biomaRt)
 library(readxl)
 
+# Fonction pour convertir notre liste de gène humain en liste de gène de souris grace à BiomaRt
 human_to_mouse <- function(x){
+  # Connection aux databses
   human = useMart("ensembl", dataset = "hsapiens_gene_ensembl")
   mouse = useMart("ensembl", dataset = "mmusculus_gene_ensembl")
   
+  # Récupération des informations (mgi_symbol) à partir de nos hgnc_symbol
   genesV2 = getLDS(attributes = c("hgnc_symbol"), filters = "hgnc_symbol", values = x , mart = human, attributesL = c("mgi_symbol"), martL = mouse, uniqueRows=T)
   return(genesV2)
 }

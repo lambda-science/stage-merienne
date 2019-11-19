@@ -7,6 +7,7 @@ library(gridExtra)
 import_data <- function(datasetPath, genelistPath = NA) {
   df <- read_excel(path=datasetPath, col_names = TRUE, col_types = "guess")
   names(df) <- make.names(names(df))
+  # Importation de la genelist si spécifié (fichier généré après script de conversion)
   if(!is.na(genelistPath)) {
     genelist <- read.table(file=genelistPath, row.names = NULL, sep="\t", header = TRUE)
     names(genelist) <- make.names(names(genelist))
@@ -16,7 +17,6 @@ import_data <- function(datasetPath, genelistPath = NA) {
 
 # Fonction pour filtrer notre dataset en mergeant avec la liste de genes
 filter_data <- function(dataset, genelist) {
-  #dataset$`Gene.name` = toupper(dataset$`Gene.name`)
   dataset_filtered <- merge(x = dataset, y = genelist, by.x = 'Gene.name', by.y = 'MGI.symbol')
   as_tibble(dataset_filtered)
   return(dataset_filtered)
@@ -31,8 +31,8 @@ create_volcano <- function(dataset, condition1, condition2) {
   dataset[padj_col] <- as.numeric(dataset[[padj_col]])
   
   # Creation d'un dataframe temporaire contenant les colonnes d'intéret
-  # Création d'une colonne contenant une information de couleur selon le log2FC et pvalue.
   df_temp_adj <- select(dataset, `Gene.name`, `Ensembl.gene.id`, logFC_col, padj_col)
+  # Création d'une colonne contenant une information de couleur selon le log2FC et pvalue.
   df_temp_adj$colors <- ifelse((df_temp_adj[[padj_col]] <=0.05 &
                               df_temp_adj[[logFC_col]]<=-1), "steelblue3",
                            ifelse((df_temp_adj[[padj_col]] <=0.05 &
@@ -44,13 +44,16 @@ create_volcano <- function(dataset, condition1, condition2) {
   return(p1)
 }
 
-
+# Working directory + importation données. Conversion list de dataframe en deux dataframe
 setwd("C:/Users/Glados/Documents/GitHub/stage-merienne")
 df_list <- import_data("data_example/allres_S17307.xlsx", "genelist/mouseGenes.tsv")
 df <- as.data.frame(df_list[1])
 genelist <- as.data.frame(df_list[2])
-df_filtered_old <- filter_data(df, genelist)
+
+# Creation d'un filtrage des données par la gene list
+df_filtered <- filter_data(df, genelist)
+
+# Plotting d'une conditions d'intérêt avec et sans filtrage
 p1 <- create_volcano(df, "R6_learn", "WT_HC")
 p2 <- create_volcano(df_filtered, "R6_learn", "WT_HC")
-
 grid.arrange(p1, p2, nrow=1)
