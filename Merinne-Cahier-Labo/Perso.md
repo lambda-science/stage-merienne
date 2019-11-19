@@ -9,4 +9,6 @@
 * Lecture de l'article "The pathobiology of perturbed mutant Huntingtin protein-protein interactions in Huntington's diseases", E. Wanker  
 * Mise à plat des problématiques et des analyses possible dans le cadre du projet dans le cahier Projet.md
 * Lecture de partie de la thèse de Caroline Lotz: "Rôle des altérations transcriptionnelles et épigénétiques dans le déficits comportementaux de la maladie de Huntington"
-* 
+
+### Mardi 19/11/2019
+**Matin**  
