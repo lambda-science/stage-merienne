@@ -148,3 +148,4 @@ vignettes/*.pdf
 # corentin custom folder
 /data_example
 /raw
+/genelist

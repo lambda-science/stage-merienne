@@ -16,3 +16,5 @@
 * ChIP-Seq of H3K27ac crossed w/ gene list  -> over time (HD Q140)
 * Gene Ontology / Protein ontology of mHTT interactors list  
 * Transcriptomics crossed w/ gene list ->  in learning/double H conditions
+
+Idée: SeqMiner sur les mHTT interactors & chip-seq data
