@@ -23,8 +23,10 @@ p2 <- create_volcano(df_filtered, "Gene.name",
 
 grid.arrange(p1, p2, nrow=1)
 
-updown_df <- retrieve_signif_genes(df, gene_name_col = "Gene.name" , logFC_col = "D2_logFC", padj_col = "D2_adj.P.Val", logFC_treshold = 1)
+updown_df <- retrieve_signif_genes(df, gene_name_col = "Gene.name" , paste(sample_name, "_logFC", sep=""),
+                                   paste(sample_name, "_adj.P.Val", sep=""), logFC_treshold = 1)
 View(updown_df)
 
-updown_df_filtered <- retrieve_signif_genes(df_filtered, gene_name_col = "Gene.name" , logFC_col = "D2_logFC", padj_col = "D2_adj.P.Val", logFC_treshold = 1)
+updown_df_filtered <- retrieve_signif_genes(df_filtered, gene_name_col = "Gene.name" , paste(sample_name, "_logFC", sep=""),
+                                            paste(sample_name, "_adj.P.Val", sep=""), logFC_treshold = 1)
 View(updown_df_filtered)
