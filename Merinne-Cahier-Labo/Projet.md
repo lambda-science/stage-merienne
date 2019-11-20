@@ -22,4 +22,8 @@
 
 ### Mardi 19/11/2019
 **Matin** 
-*Idée: SeqMiner sur les mHTT interactors & chip-seq data
+* Idée: SeqMiner sur les mHTT interactors & chip-seq data
+
+**Après-midi**
+* Récupération des fichiers cell types
+* Début analyse transcriptomics cell-types dépendant

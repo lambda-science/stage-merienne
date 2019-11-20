@@ -5,11 +5,12 @@ library(gridExtra)
 
 # Fonction pour importer notre dataset (expression differentielle) et notre liste de gèbe (optionelle)
 import_data <- function(datasetPath, genelistPath = NA) {
+  # Fonction pour importer notre dataset (expression differentielle) et notre liste de gèbe (optionelle)
   df <- read_excel(path=datasetPath, col_names = TRUE, col_types = "guess")
   names(df) <- make.names(names(df))
   # Importation de la genelist si spécifié (fichier généré après script de conversion)
   if(!is.na(genelistPath)) {
-    genelist <- read.table(file=genelistPath, row.names = NULL, sep="\t", header = TRUE)
+    genelist <- read.table(file=genelistPath, row.names = NULL, sep="\t", header = TRUE, quote = "")
     names(genelist) <- make.names(names(genelist))
   }
   return(list(df, genelist))

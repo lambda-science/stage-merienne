@@ -20,3 +20,13 @@
 * Réunion de groute avec Karine, Johnattan, Raphael
 * Début de script biomaRt pour convertir nos gènes humains en gènes de sourie
 * GLT astrocytes ; Cx3: Microglie. Récupération des fichiers cell-type spec, tentative de merge.
+
+### Mercredi 20/11/2019
+**Matin**
+* Résolution probleme merging fichier de cell type
+* Script de récupération de gene name vs ensembl ID
+* Début de script de analyse cell type transcriptomics
+
+**Après-midi**
+* Creation d'un script créant une matrice de présence absence des gènes cell-types spécific filtré ou non avec les interacteurs
+* Refactoring du code de volcano plot et doc

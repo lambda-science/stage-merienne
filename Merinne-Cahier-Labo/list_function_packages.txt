@@ -1,0 +1,10 @@
+# toutes les fonctions à faire
+1) profiles seqminer
+2) barplots (Maxime travail)
+3) zscores
+4) Normalisation
+5) heatmap sere score
+6) boxplot count normalisés RPK
+7) boxplot z-score
+8) volcanoplot
+9) MA-plot
