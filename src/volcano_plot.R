@@ -1,8 +1,23 @@
 library(readxl)
 library(ggplot2)
 library(dplyr)
-library(gridExtra)
 
+import_data_excel <- function(dataPath) {
+  # Fonction pour importer des données d'un fichier excel
+  # Input:  dataPath (str): chemin vers le fichier
+  # Output: df (dataframe): un dataframe contenant nos données
+  df <- read_excel(path=dataPath, col_names = TRUE, col_types = "guess")
+  return(df)
+}
+
+import_data_txt <- function(dataPath, sep="\t") {
+  # Fonction pour importer des données d'un fichier textuel
+  # Input:  dataPath (str): chemin vers le fichier
+  #         sep (str): caractères qui sépare les colonnes ("," pour les csv, "\t" pour tabulation)
+  # Output: df (dataframe): un dataframe contenant nos données
+  df <- read.table(file=dataPath, row.names = NULL, sep="\t", header = TRUE)
+  return(df)
+}
 
 filter_data <- function(dataset, genelist, col_gene_data, col_genelist) {
   # Fonction pour filtrer notre dataset en mergeant avec la liste de genes
@@ -46,24 +61,6 @@ create_volcano <- function(dataset, gene_name_col, logFC_col, padj_col, logFC_tr
   p1 <- ggplot(df_temp_adj, aes(y=-log(df_temp_adj[[padj_col]]), x=df_temp_adj[[logFC_col]]) ) +
     geom_point(colour = df_temp_adj$colors) +
     geom_hline(yintercept=-log(0.05), linetype="dashed", color = "red") +
-    ggtitle(title)
+    ggtitle(title) + xlab("log2 Fold Change") + ylab("-(P-value adjusted)")
   return(p1)
 }
-
-
-df <- read.table(file="raw/merged_all.tsv", row.names = NULL, sep="\t", header = TRUE)
-genelist <- read.table(file="genelist/mouseGenes.tsv", row.names = NULL, sep="\t", header = TRUE)
-df_filtered <- filter_data(df, genelist, "Gene.name", "MGI.symbol")
-
-# Cell type disponibles: "Cx3", "D1", "D2", "GLT", "N"
-sample_name <- "Cx3"
-p1 <- create_volcano(df, "Gene.name", 
-                     paste(sample_name, "_logFC", sep=""),
-                     paste(sample_name, "_adj.P.Val", sep=""), 
-                     logFC_treshold = 1, title = sample_name)
-p2 <- create_volcano(df_filtered, "Gene.name", 
-                     paste(sample_name, "_logFC", sep=""),
-                     paste(sample_name, "_adj.P.Val", sep=""), 
-                     logFC_treshold = 1, title = paste(sample_name, " filtered w/ interactors", sep=""))
-
-grid.arrange(p1, p2, nrow=1)

@@ -30,3 +30,5 @@
 **Après-midi**
 * Creation d'un script créant une matrice de présence absence des gènes cell-types spécific filtré ou non avec les interacteurs
 * Refactoring du code de volcano plot et doc
+* Séparation des fonctions de volcano plot dans un fichier source, commentés contenant que les fonctions
+* Début travaux sur fonction d'extraction des LFC de genes

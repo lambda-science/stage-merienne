@@ -27,3 +27,14 @@
 **Après-midi**
 * Récupération des fichiers cell types
 * Début analyse transcriptomics cell-types dépendant
+
+
+### Mercredi 20/11/2019
+**Matin**
+* Travavaux matrice présence absence
+* Volcano plot cell type spécific
+
+**Après-midi**
+* Refactoring en vue de préparation d'un module fonctionnel (volcano plot)
+* Fin matrice prez / abs
+* Début extraction LFC
