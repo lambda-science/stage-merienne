@@ -17,9 +17,6 @@
 * Gene Ontology / Protein ontology of mHTT interactors list  
 * Transcriptomics crossed w/ gene list ->  in learning/double H conditions
 
-
-
-
 ### Mardi 19/11/2019
 **Matin** 
 * Idée: SeqMiner sur les mHTT interactors & chip-seq data
@@ -27,7 +24,6 @@
 **Après-midi**
 * Récupération des fichiers cell types
 * Début analyse transcriptomics cell-types dépendant
-
 
 ### Mercredi 20/11/2019
 **Matin**

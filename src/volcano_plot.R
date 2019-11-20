@@ -64,3 +64,31 @@ create_volcano <- function(dataset, gene_name_col, logFC_col, padj_col, logFC_tr
     ggtitle(title) + xlab("log2 Fold Change") + ylab("-(P-value adjusted)")
   return(p1)
 }
+
+
+retrieve_signif_genes <- function(dataset, gene_name_col, logFC_col, padj_col, 
+                                  logFC_treshold = 1000 , pval_treshold = 0.05) {
+  # Fonction qui retourne un dataframe contenant les gènes différentiellement exprimé dans une condition
+  # Input:  dataset (dataframe): le dataframe contenant les fold change
+  #         gene_name_col (dataframe): le nom de la colonne des noms de gène dans le dataset
+  #         logFC_col (str): le nom de la colonne contenant nos foldchange
+  #         padj_col (str): le nom de la colonne contenant nos pvaleurs
+  #         logFC_treshold (num): logFoldChange treshold
+  #         pval_treshold (num): p-val treshold
+  # Ouput:  updown_df (dataframe)): dataframe contenant le nom, logFC, pval et regulation des gènes significatifs
+  
+  dataset[padj_col] <- as.numeric(dataset[[padj_col]])
+  # Creation d'un dataframe temporaire contenant les colonnes d'intéret
+  df_temp <- select(dataset, gene_name_col, logFC_col, padj_col)
+  
+  # Ajoute d'une colonne "régulation" donnant l'expression des gènes
+  df_temp$regulation <- ifelse((df_temp[[padj_col]] <=pval_treshold &
+                                  df_temp[[logFC_col]]<=-logFC_treshold), "down",
+                               ifelse((df_temp[[padj_col]] <=pval_treshold &
+                                         df_temp[[logFC_col]]>=logFC_treshold), "up", NA))
+  
+  # Sélection des lignes sans NA (= tout les gènes différentiellement exprimé dans cette condition)
+  updown_df <- df_temp[complete.cases(df_temp), ]
+  updown_df <- updown_df[order(updown_df[logFC_col], decreasing = TRUE),]
+  return(updown_df)
+}

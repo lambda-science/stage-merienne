@@ -1,4 +1,5 @@
 library(gridExtra)
+library(dplyr)
 source("src/volcano_plot.R")
 
 # Importation des données et filtrage
@@ -21,3 +22,8 @@ p2 <- create_volcano(df_filtered, "Gene.name",
                      logFC_treshold = 1, title = paste(sample_name, " filtered w/ interactors", sep=""))
 
 grid.arrange(p1, p2, nrow=1)
+
+
+
+updown_df <- retrieve_signif_genes(df_filtered, gene_name_col = "Gene.name" , logFC_col = "D2_logFC", padj_col = "D2_adj.P.Val", logFC_treshold = 1)
+View(updown_df)

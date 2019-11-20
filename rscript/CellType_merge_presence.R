@@ -5,6 +5,7 @@ library(dplyr)
 # Importation des données en listant les fichiers d'un dossier
 setwd("C:/Users/Glados/Documents/GitHub/stage-merienne")
 fileList <- paste("raw/LCM/", list.files("raw/LCM/"), sep="")
+
 # Puis en important chaque fichier dans une liste qui contient les dataframes de chaque fichier
 i=1
 dfList <- list()
