@@ -5,6 +5,6 @@
 * V Faire table avec tout les gens & colonnes qui indique dans quel cell type
 * V nom axes
 * V fonction excel ou table 
+* V Récup gènes si interacteur différentiellement ?
 
 * x y lim
-* Récup gènes si interacteur différentiellement ?
