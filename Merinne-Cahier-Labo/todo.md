@@ -8,3 +8,11 @@
 * V Récup gènes si interacteur différentiellement ?
 
 * x y lim
+
+***
+
+* fonction export
+* colonne order: * - GLIA - Neuronnes
+* write sans guillet quote false
+* import export autre fichier
+* envoyer code

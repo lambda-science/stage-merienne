@@ -15,7 +15,7 @@ import_data_txt <- function(dataPath, sep="\t") {
   # Input:  dataPath (str): chemin vers le fichier
   #         sep (str): caractères qui sépare les colonnes ("," pour les csv, "\t" pour tabulation)
   # Output: df (dataframe): un dataframe contenant nos données
-  df <- read.table(file=dataPath, row.names = NULL, sep="\t", header = TRUE)
+  df <- read.table(file=dataPath, row.names = NULL, sep=sep, header = TRUE)
   return(df)
 }
 

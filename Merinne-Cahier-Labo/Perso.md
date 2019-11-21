@@ -38,3 +38,9 @@
         **Eno1b**: Glycolytic enzyme the catalyzes the conversion of 2-phosphoglycerate to phosphoenolpyruvate. In addition to glycolysis, involved in various processes such as growth control, hypoxia tolerance and allergic responses. May also function in the intravascular and pericellular fibrinolytic system due to its ability to serve as a receptor and activator of plasminogen on the cell surface of several cell-types such as leukocytes and neurons. Stimulates immunoglobulin production. -- **Alpha-enolase**  
         **Hspa1b**: Molecular chaperone implicated in a wide variety of cellular processes, including protection of the proteome from stress, folding and transport of newly synthesized polypeptides, activation of proteolysis of misfolded proteins and the formation and dissociation of protein complexes. Plays a pivotal role in the protein quality control system, ensuring the correct folding of proteins, the re-folding of misfolded proteins and controlling the targeting of proteins for subsequent degradation.  -- **Heat shock 70 kDa protein 1B**  
         **Serpina3n**: The single human alpha1-antichymotrypsin gene (SERPINA3) is represented by a cluster of 14 individual murine paralogs. -- **Serine protease inhibitor A3N** - secreted  
+
+
+### Jeudi 21/11/2019
+**Matin**
+* Creation rapport rmarkdown volcano plot cell-type specific
+* Résolution de problême d'affiche de dataframe interactif en utilisant https://github.com/rstudio/DT/issues/67
