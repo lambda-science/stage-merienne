@@ -19,6 +19,10 @@ import_data_txt <- function(dataPath, sep="\t") {
   return(df)
 }
 
+export_data_txt <- function(dataset, PathFilename, sep="\t") {
+  write.table(dataset, file=PathFilename, sep=sep, row.names = FALSE, quote=FALSE)
+}
+
 filter_data <- function(dataset, genelist, col_gene_data, col_genelist) {
   # Fonction pour filtrer notre dataset en mergeant avec la liste de genes
   # Input:  dataset (dataframe): le dataframe contenant les fold change
@@ -32,7 +36,7 @@ filter_data <- function(dataset, genelist, col_gene_data, col_genelist) {
 }
 
 
-create_volcano <- function(dataset, gene_name_col, logFC_col, padj_col, logFC_treshold = 1000 , pval_treshold = 0.05, 
+create_volcano <- function(dataset, gene_name_col, logFC_col, padj_col, logFC_treshold = 0 , pval_treshold = 0.05, 
                            title = "Volcano Plot", down_color = "steelblue3", up_color = "red2") {
   # Fonction qui retourne un object ggplot contenant notre volcano plot.
   # Input:  dataset (dataframe): le dataframe contenant les fold change
@@ -52,11 +56,14 @@ create_volcano <- function(dataset, gene_name_col, logFC_col, padj_col, logFC_tr
   # Creation d'un dataframe temporaire contenant les colonnes d'intéret
   df_temp_adj <- select(dataset, gene_name_col, logFC_col, padj_col)
   # Création d'une colonne contenant une information de couleur selon le log2FC et pvalue.
-  df_temp_adj$colors <- ifelse((df_temp_adj[[padj_col]] <=pval_treshold &
+  #
+  df_temp_adj$colors <- "black"
+  if (logFC_treshold != 0){
+    df_temp_adj$colors <- ifelse((df_temp_adj[[padj_col]] <=pval_treshold &
                                   df_temp_adj[[logFC_col]]<=-logFC_treshold), down_color,
-                               ifelse((df_temp_adj[[padj_col]] <=pval_treshold &
-                                         df_temp_adj[[logFC_col]]>=logFC_treshold), up_color, "black"))
-  
+                          ifelse((df_temp_adj[[padj_col]] <=pval_treshold &
+                                  df_temp_adj[[logFC_col]]>=logFC_treshold), up_color, "black"))
+  }
   # Plotting de notre volcano plot
   p1 <- ggplot(df_temp_adj, aes(y=-log(df_temp_adj[[padj_col]]), x=df_temp_adj[[logFC_col]]) ) +
     geom_point(colour = df_temp_adj$colors) +

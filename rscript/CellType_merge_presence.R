@@ -1,7 +1,6 @@
 library(readxl)
 library(biomaRt)
 library(dplyr)
-
 # Importation des données en listant les fichiers d'un dossier
 setwd("C:/Users/Glados/Documents/GitHub/stage-merienne")
 fileList <- paste("raw/LCM/", list.files("raw/LCM/"), sep="")
@@ -39,7 +38,7 @@ df_merged <- merge(df_merged, test, by.x = "GeneID", by.y = "ensembl_gene_id", a
 names(df_merged)[names(df_merged) == "mgi_symbol"] <- "Gene.name"
 
 # Ecriture du fichier merged final
-write.table(df_merged, file="raw/merged_all.tsv", sep="\t", row.names = FALSE)
+write.table(df_merged, file="raw/merged_all.tsv", sep="\t", row.names = FALSE, quote=FALSE)
 
 #################################################################################
 # Code pour avoir une matrice présence / absence
@@ -70,7 +69,10 @@ df_presence_absence_filt["HGNC.symbol"] <- NULL
 # Formattage des tables en renommant les colonnes, organisée et triée et en les écrivant dans des fichiers
 colnames(df_presence_absence) <- c("Ensembl Gene ID", "Cx3", "D1", "D2", "GLIA", "GLT", "Neurons", "Gene name")
 colnames(df_presence_absence_filt) <- c("Gene name", "Ensembl Gene ID", "Cx3", "D1", "D2", "GLIA", "GLT", "Neurons")
-df_presence_absence <- select(df_presence_absence, "Gene name", everything())
+col_order <- c("Ensembl Gene ID", "Gene name", "Cx3", "D1", "D2", "GLT", "GLIA", "Neurons")
+df_presence_absence <- df_presence_absence[, col_order]
+df_presence_absence_filt <- df_presence_absence_filt[, col_order]
 df_presence_absence <- df_presence_absence[order(df_presence_absence$`Gene name`),]
-write.table(df_presence_absence, file="results/pres_abs/dataset.tsv", sep="\t", row.names = FALSE)
-write.table(df_presence_absence_filt, file="results/pres_abs/dataset_filtred.tsv", sep="\t", row.names = FALSE)
+write.table(df_presence_absence
+            , file="results/pres_abs/dataset.tsv", sep="\t", row.names = FALSE, quote=FALSE)
+write.table(df_presence_absence_filt, file="results/pres_abs/dataset_filtred.tsv", sep="\t", row.names = FALSE, quote=FALSE)

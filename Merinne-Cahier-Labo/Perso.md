@@ -44,3 +44,4 @@
 **Matin**
 * Creation rapport rmarkdown volcano plot cell-type specific
 * Résolution de problême d'affiche de dataframe interactif en utilisant https://github.com/rstudio/DT/issues/67
+* Etat avancement avec Johnattan ; update to-do list

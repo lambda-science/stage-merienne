@@ -10,9 +10,9 @@
 * x y lim
 
 ***
-
-* fonction export
-* colonne order: * - GLIA - Neuronnes
-* write sans guillet quote false
+* V~ colonne couleur défaut noir & changer ensuite
+* V~ fonction export
+* V colonne order: * - GLIA - Neuronnes
+* V write sans guillet quote false
 * import export autre fichier
-* envoyer code
+* envoyer code (accès github)
