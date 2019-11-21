@@ -1,0 +1,53 @@
+---
+title: "Transcriptomes Learning or Home-Caged"
+author: "Corentin Meyer"
+date: "21/11/2019"
+output: html_document
+---
+***
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "C:/Users/Glados/Documents/GitHub/stage-merienne/")
+```
+
+## Volcano plots for each conditions of the learning experiment.
+**Thresholds used are log2(Foldchange) > 1 or < -1 and p-value adjusted < 0.05**
+
+```{r, echo=FALSE, include=FALSE}
+library(gridExtra)
+source("src/volcano_plot.R")
+DT::datatable(matrix())
+
+df <- import_data_excel(dataPath = "data_example/allres_S17307.xlsx")
+genelist <- import_data_txt("genelist/mouseGenes.tsv")
+df_filtered <- filter_data(df, genelist, "Gene name", "MGI.symbol")
+col_samples <- import_data_txt("data_example/colnames.txt")
+col_samples <- col_samples[[1]]
+col_samples <- as.vector(col_samples)
+
+```
+
+```{r, echo=FALSE, results='asis', warning=F}
+# Intreactive table + loop using: https://github.com/rstudio/DT/issues/67 solution
+for (i in seq(1,30,2)){
+    cat("\n\n")
+    cat(paste("## Results for", col_samples[i], "sample. \n\n"))
+    p1 <- create_volcano(df, "Gene name", 
+                         col_samples[i],
+                         col_samples[i+1], 
+                         logFC_treshold = 1, title = col_samples[i])
+    p2 <- create_volcano(df_filtered, "Gene name", 
+                         col_samples[i],
+                         col_samples[i+1], 
+                         logFC_treshold = 1, title = paste(col_samples[i], " filtered w/ interactors", sep=""))
+    
+    updown_df_filtered <- retrieve_signif_genes(df_filtered, gene_name_col = "Gene name" , 
+                                                col_samples[i], 
+                                                col_samples[i+1], logFC_treshold = 1)
+    
+    grid.arrange(p1, p2, nrow=1)
+    cat(knitr::knit_print(DT::datatable(updown_df_filtered, width = "100%", rownames = F, style="bootstrap",
+                                        colnames = c("Gene Name", "Log Fold Change", "P-value", "Regulation"))))
+}
+```

@@ -17,7 +17,7 @@ genelist <- read_excel(path="genelist/htt_interactors.xlsx", col_names = TRUE, c
 names(genelist) <- make.names(names(genelist))
 
 newGeneList <- human_to_mouse(genelist[["Gene.symbol"]])
-write.table(newGeneList, file="genelist/mouseGenes.tsv",row.names = FALSE, sep="\t")
+write.table(newGeneList, file="genelist/mouseGenes.tsv",row.names = FALSE, sep="\t", quote=FALSE)
 
 #df <- read_excel(path="data_example/allres_S17307.xlsx", col_names = TRUE, col_types = "guess")
 #names(df) <- make.names(names(df))
