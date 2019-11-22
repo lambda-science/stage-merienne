@@ -9,7 +9,7 @@ col_samples <- import_data_txt("raw/LNCA/colname.txt")
 col_samples <- col_samples[[1]]
 col_samples <- as.vector(col_samples)
 
-for (i in seq(1,14,2)){
+for (i in seq(1,2,2)){
   p1 <- create_volcano(df, "Gene name", 
                        col_samples[i],
                        col_samples[i+1], 
@@ -21,9 +21,15 @@ for (i in seq(1,14,2)){
   
   updown_df_filtered <- retrieve_signif_genes(df_filtered, gene_name_col = "Gene name" , 
                                               col_samples[i], 
-                                              col_samples[i+1], logFC_treshold = 1)
+                                              col_samples[i+1], logFC_treshold = 0, pval_treshold = 0.05)
   
   grid.arrange(p1, p2, nrow=1)
-  cat(knitr::knit_print(DT::datatable(updown_df_filtered, width = "100%", rownames = F, style="bootstrap",
-                                      colnames = c("Gene Name", "Log Fold Change", "P-value", "Regulation"))))
+
 }
+proportion_count <- updown_df_filtered %>% 
+  group_by(regulation) %>% 
+  count() %>% as.data.frame()
+row.names(proportion_count) <- proportion_count$regulation
+proportion_count[1] <- NULL
+pppp <- binom.test(proportion_count[['down', 'n']], proportion_count[['down','n']]+proportion_count[['up','n']], 0.5)
+
