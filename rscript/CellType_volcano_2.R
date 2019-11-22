@@ -10,7 +10,7 @@ col_samples <- import_data_txt("raw/LNCA/colname.txt")
 col_samples <- col_samples[[1]]
 col_samples <- as.vector(col_samples)
 
-# Boucle qui itère sur chaque non de colonne (2 à 2 -log fold + pval)
+# Boucle qui itère sur chaque nom de colonne (2 à 2 -> log fold + pval)
 # Crée les volcano, crée le dataframe des interacteurs differtiellement exprimés
 for (i in seq(1,14,2)){
   p1 <- create_volcano(df, "Gene name", 
@@ -24,13 +24,14 @@ for (i in seq(1,14,2)){
   
   updown_df_filtered <- retrieve_signif_genes(df_filtered, gene_name_col = "Gene name" , 
                                               col_samples[i], 
-                                              col_samples[i+1], logFC_treshold = 0, pval_treshold = 0.05)
+                                              col_samples[i+1], logFC_treshold = 1, pval_treshold = 0.05)
   
   grid.arrange(p1, p2, nrow=1)
 
 }
 ################################
-# Réalisation du test binomiale
+# Réalisation du test binomiale (hors boucle donc pour une seule condition pour tester.)
+# Code dans la boucle dans le cas du rapport
 # Sélection des genes juste sur un seuile de pval & interacteurs
 updown_df_pval <- retrieve_signif_genes(df_filtered, gene_name_col = "Gene name" , 
                                         col_samples[i], 
@@ -57,8 +58,14 @@ n_total <- n_down + n_up
 cat("\n N Interactor left (LFC <0): ", n_down, "\n ")
 cat("\n N Interactor right (LFC >0): ", n_up, "\n ")
 cat("\n N Interactor Total (pval < 0.05): ", n_total, "\n ")
-tryCatch({prop_test <- binom.test(proportion_count[['down', 'n']], n_total, 0.5)
-cat("\n**Binomial test** P(Interactor=Left) = [", prop_test$conf.int, "] | P-value = ", prop_test$p.value, "\n")}, error=function(e){})
-tryCatch({prop_test <- binom.test(proportion_count[['up', 'n']], n_total, 0.5)
-cat("\n**Binomial test** P(Interactor=Right) = [", prop_test$conf.int, "] | P-value = ", prop_test$p.value, "\n")}, error=function(e){})
+tryCatch({
+  prop_test <- binom.test(proportion_count[['down', 'n']], n_total, 0.5)
+  cat("\n**Binomial test** P(Interactor=Left) = [", prop_test$conf.int, "] | P-value = ",
+    prop_test$p.value, "\n")
+  }, error=function(e){})
 
+tryCatch({
+  prop_test <- binom.test(proportion_count[['up', 'n']], n_total, 0.5)
+  cat("\n**Binomial test** P(Interactor=Right) = [", prop_test$conf.int, "] | P-value = ",
+    prop_test$p.value, "\n")
+}, error=function(e){})
