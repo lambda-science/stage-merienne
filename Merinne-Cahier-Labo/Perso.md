@@ -45,3 +45,16 @@
 * Creation rapport rmarkdown volcano plot cell-type specific
 * Résolution de problême d'affiche de dataframe interactif en utilisant https://github.com/rstudio/DT/issues/67
 * Etat avancement avec Johnattan ; update to-do list
+
+**Après-midi**
+* Transfert rapport à Karine
+* Update de fontions
+* Récupération données complète de transcriptomes cell types spec
+
+### Vendredi 22/11/2019
+**Matin**
+* Génération et envoie du rapport avec les nouvelles données
+* Intégration d'un test bionomial au rapport pour tester l'enrichissement en interacteurs
+
+**Après-midi**
+* Thèse de David
