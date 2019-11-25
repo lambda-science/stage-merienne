@@ -59,3 +59,8 @@
 **Après-midi**
 * Thèse de David
 * Préparer un r-data avec volcano et rapport
+
+### Lundi 25/11/2019
+**Matin**  
+* Travail sur fonction de stacking pour refaire les analyses
+* Fiche récap des caract des deux données dispo
