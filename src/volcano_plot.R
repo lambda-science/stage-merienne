@@ -31,7 +31,7 @@ filter_data <- function(dataset, genelist, col_gene_data, col_genelist) {
   #         col_genelist (str): le nom de la colonne des noms de gène dans la gène list
   # Ouput:  dataset_filtered (dataframe): dataset filtré par notre liste de gènes
   dataset_filtered <- merge(x = dataset, y = genelist, by.x = col_gene_data, by.y = col_genelist)
-  as_tibble(dataset_filtered)
+  #as_tibble(dataset_filtered)
   return(dataset_filtered)
 }
 
@@ -52,7 +52,7 @@ create_volcano <- function(dataset, gene_name_col, logFC_col, padj_col, logFC_tr
   
   # Conversion des p-value en numeric
   dataset[padj_col] <- as.numeric(dataset[[padj_col]])
-  
+  dataset[logFC_col] <- as.numeric(dataset[[logFC_col]])
   # Creation d'un dataframe temporaire contenant les colonnes d'intéret
   df_temp_adj <- select(dataset, gene_name_col, logFC_col, padj_col)
   # Création d'une colonne contenant une information de couleur selon le log2FC et pvalue.
