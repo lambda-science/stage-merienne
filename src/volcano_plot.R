@@ -51,8 +51,7 @@ create_volcano <- function(dataset, gene_name_col, logFC_col, padj_col, logFC_tr
   # Ouput:  p1 (ggplot object)): objet ggplot contenant le volcanoplot
   
   # Conversion des p-value en numeric
-  dataset[padj_col] <- as.numeric(dataset[[padj_col]])
-  dataset[logFC_col] <- as.numeric(dataset[[logFC_col]])
+  dataset[padj_col] <- as.numeric(as.character(dataset[[padj_col]]))
   # Creation d'un dataframe temporaire contenant les colonnes d'intéret
   df_temp_adj <- select(dataset, gene_name_col, logFC_col, padj_col)
   # Création d'une colonne contenant une information de couleur selon le log2FC et pvalue.

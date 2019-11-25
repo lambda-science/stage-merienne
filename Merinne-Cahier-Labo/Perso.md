@@ -67,3 +67,7 @@
 * Checking des données, adaptations des seuil LFC (beaucoup moins stringeants)
 * Adatation test binomial avec proba de reference (biais initial)
 * Envoie du nouveau rapport
+
+**Après-midi**  
+* Creation rapport learning
+* REGLAGE DE BUG A CAUSE VIRGULE A LA PLACE DE POINT DANS EXCEL
