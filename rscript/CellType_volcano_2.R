@@ -29,10 +29,10 @@ for (i in seq(1,14,2)){
   grid.arrange(p1, p2, nrow=1)
 
 }
-################################
+###########################################################
 # Réalisation du test binomiale (hors boucle donc pour une seule condition pour tester.)
 # Code dans la boucle dans le cas du rapport
-# Sélection des genes juste sur un seuile de pval & interacteurs
+# Sélection des genes juste sur un seuil de pval & interacteurs
 updown_df_pval <- retrieve_signif_genes(df_filtered, gene_name_col = "Gene name" , 
                                         col_samples[i], 
                                         col_samples[i+1], logFC_treshold = 0, pval_treshold = 0.05)
@@ -41,12 +41,12 @@ proportion_count <- updown_df_pval %>%
   group_by(regulation) %>% 
   count() %>% as.data.frame()
 
-# Formating du dataframe en virant une colonne et remplacement de NA en 0
+# Formating du dataframe en virant une colonne et remplacement des possible NA en 0
 row.names(proportion_count) <- proportion_count$regulation
 proportion_count[1] <- NULL
 proportion_count[is.na(proportion_count)] <- 0
 
-# assignation à variable des valeurs up & down. Si absentes du dataframe: assignation de 0
+# Assignation à variable des valeurs up & down. Si absentes du dataframe: assignation de 0
 n_down <- 0
 n_up <- 0
 tryCatch({n_down <-  proportion_count[['down','n']]}, error=function(e){})
