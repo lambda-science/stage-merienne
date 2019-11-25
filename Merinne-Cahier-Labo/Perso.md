@@ -64,3 +64,6 @@
 **Matin**  
 * Travail sur fonction de stacking pour refaire les analyses
 * Fiche récap des caract des deux données dispo
+* Checking des données, adaptations des seuil LFC (beaucoup moins stringeants)
+* Adatation test binomial avec proba de reference (biais initial)
+* Envoie du nouveau rapport
