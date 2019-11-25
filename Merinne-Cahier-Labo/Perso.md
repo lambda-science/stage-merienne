@@ -71,3 +71,4 @@
 **Après-midi**  
 * Creation rapport learning
 * REGLAGE DE BUG A CAUSE VIRGULE A LA PLACE DE POINT DANS EXCEL
+* MISSING ROW à investiguer
