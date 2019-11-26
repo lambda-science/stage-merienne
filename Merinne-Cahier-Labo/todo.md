@@ -20,6 +20,7 @@
 
 
 ***
+
 * reconaissance colonne "log2" & "adjusted"  
     erreure custom "log2" non trouvé dans colonne p.e  
     doc  
