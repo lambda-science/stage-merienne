@@ -16,3 +16,20 @@
 * V write sans guillet quote false
 * import export autre fichier
 * envoyer code (accès github)
+
+
+
+***
+* reconaissance colonne "log2" & "adjusted"  
+    erreure custom "log2" non trouvé dans colonne p.e  
+    doc  
+
+    grep "log2" sur colname df
+        donne des indexs utilisable sur colnames(df)[1]
+        enlever carrément le fichier colnames
+
+    remplacer proportion compte %<% juse par la fonction table qui sort directement un vecteur
+    (vérifié que l'odre ne change pas ou gérer)
+
+save plots in outputfold p.e
+    vérifier repertoire, création repetoire
