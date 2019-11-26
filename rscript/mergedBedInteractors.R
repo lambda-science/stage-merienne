@@ -4,4 +4,6 @@ df <- read.table(file="F:/seqMINER_1.3.4/lib/refGene_mm10_genebody.bed", row.nam
 genelist <- import_data_txt("genelist/mouseGenes.tsv")
 
 merged <- merge(df, genelist["MGI.symbol"], by.x = "V5", by.y = "MGI.symbol")
-write.table(merged, file="F:/seqMINER_1.3.4/lib/refGene_mm10_interactors.bed", col.names = F, row.names = F, sep = "\t")
+merged <- merged[, c(2,3,4,5,1,6)]
+write.table(merged, file="C:/Users/Corentin/Desktop/seqMINER_1.3.4/lib/refGene_mm10_interactors.bed",
+            col.names = F, row.names = F, sep = "\t", quote=F)
