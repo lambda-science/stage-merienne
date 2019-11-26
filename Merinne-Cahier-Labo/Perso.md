@@ -72,3 +72,7 @@
 * Creation rapport learning
 * REGLAGE DE BUG A CAUSE VIRGULE A LA PLACE DE POINT DANS EXCEL
 * MISSING ROW à investiguer
+
+### Mardi 26/11/2019  
+**Matin**  
+* Conversion des rapport en PDF: missing row dans certains cas car missing value padj
