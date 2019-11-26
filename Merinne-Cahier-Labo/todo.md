@@ -33,3 +33,5 @@
 
 save plots in outputfold p.e
     vérifier repertoire, création repetoire
+        sauvegarder plot + table as txt
+        

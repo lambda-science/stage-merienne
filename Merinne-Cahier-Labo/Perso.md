@@ -76,3 +76,10 @@
 ### Mardi 26/11/2019  
 **Matin**  
 * Conversion des rapport en PDF: missing row dans certains cas car missing value padj
+**CONDITION LEARN**  
+* Probe = jour du test ; Homecage = vrai controle 
+* Probe / Learn = juste temps différents
+* Voire juste chez WT Probe vs WT HC si y'a des intéracteurs qui agissent. Si oui: regarder chez WT Learn / HC si ça arrive avant test 
+
+* Croiser gene peak annotation w/ interactor list (small file)
+* Réunion avec Jonathan sur l'aspect code / package developpement et consignes pour améliorer le tout
