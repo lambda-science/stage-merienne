@@ -100,7 +100,7 @@ f_main_bargraphes <- function(subtable, n) {
 
 
 f_testbinom <- function(obs, exp, h , n) {
-# h = nombre égale à la taille des vecteurs obs/exp/n (= nombre de clusters étudié)
+# h = nombre égale � la taille des vecteurs obs/exp/n (= nombre de clusters étudié)
 # n = vecteurs comprennant le nombre de gènes des différents clusters
 # Cette fonction renvoi le vecteur des différents seuil de significativités (étoiles)
 

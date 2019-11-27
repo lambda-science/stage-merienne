@@ -35,9 +35,8 @@ for(i in 1 : length(args)){
 library(ggplot2)
 
 # add source to load functions --> check, research the path for the script version
-source("C:/Users/Glados/Documents/GitHub/stage-merienne/src/script-maxime/script_clusters3_max_corrected_jse.r")
-source("C:/Users/Glados/Documents/GitHub/stage-merienne/src/script-maxime/ggplotImages.r")
-
+source("/mnt/c//Users/Glados/Documents/GitHub/stage-merienne/src/script-maxime/script_clusters3_max_corrected_jse.r")
+source("/mnt/c/Users/Glados/Documents/GitHub/stage-merienne/src/script-maxime/ggplotImages.r")
 
 
 # load the file
@@ -48,7 +47,7 @@ data_red <- data_red[-grep("F", data_red$cluster),] # to improve
 
 
 # create the variables
-groups <- union(data_red$group1, data_red$group2)
+groups <- unique(data_red$group1)
 clusters <- unique(data_red$cluster)
  
 
@@ -61,33 +60,27 @@ total <- cbind(total, freq = (total$nb_gene/sum(total$nb_gene)))
 
 
 # add the expected columns
-data_red <- cbind(data_red, down_exp = rep(0, times=nrow(data_red)))
-data_red <- cbind(data_red, up_exp = rep(0, times=nrow(data_red)))
+data_red <- cbind(data_red, exp = rep(0, times=nrow(data_red)))
 
 
 # determine the values for the expected columns
-for(gp1 in groups[1:(length(groups)-1)]){
-	for(gp2 in groups[(grep(gp1, groups)+1):length(groups)]){
+for(gp1 in groups){
 		
 		# find index for the subtable creation
-		index <- intersect(grep(gp1, data_red$group1), grep(gp2, data_red$group2))
+		index <- grep(gp1, data_red$group1)
 		
 		#check the index 
 		if(length(index) > 0){
 
 			# calculation of expected values
-			data_red[index, "down_exp"] <- sum(data_red[index, "down_obs"]) * total$freq
-			data_red[index, "up_exp"] <- sum(data_red[index, "up_obs"]) * total$freq
+			data_red[index, "exp"] <- sum(data_red[index, "obs"]) * total$freq
 		
 			# save in corresponding files
-			saveGGplotPdf(file=paste(paste(gp1, gp2, "hist_down",sep= "_"), ".pdf", sep=""), ggplot=f_bargraphes(data_red[index,], n= total$nb_gene))
-			saveGGplotPng(file=paste(paste(gp1, gp2, "hist_down",sep= "_"), ".png", sep=""), ggplot=f_bargraphes(data_red[index,], n= total$nb_gene))
-			saveGGplotSvg(file=paste(paste(gp1, gp2, "hist_down",sep= "_"), ".svg", sep=""), ggplot=f_bargraphes(data_red[index,], n= total$nb_gene))
-			saveGGplotPdf(file=paste(paste(gp1, gp2, "hist_up",sep= "_"), ".pdf", sep=""), ggplot=f_bargraphes(data_red[index,], n= total$nb_gene, FALSE))
-			saveGGplotPng(file=paste(paste(gp1, gp2, "hist_up",sep= "_"), ".png", sep=""), ggplot=f_bargraphes(data_red[index,], n= total$nb_gene, FALSE))
-			saveGGplotSvg(file=paste(paste(gp1, gp2, "hist_up",sep= "_"), ".svg", sep=""), ggplot=f_bargraphes(data_red[index,], n= total$nb_gene, FALSE))
+			saveGGplotPdf(file=paste(paste(gp1, "hist",sep= "_"), ".pdf", sep=""), ggplot=f_main_bargraphes(data_red[index,], n= total$nb_gene))
+			saveGGplotPng(file=paste(paste(gp1, "hist",sep= "_"), ".png", sep=""), ggplot=f_main_bargraphes(data_red[index,], n= total$nb_gene))
+			saveGGplotSvg(file=paste(paste(gp1, "hist",sep= "_"), ".svg", sep=""), ggplot=f_main_bargraphes(data_red[index,], n= total$nb_gene))
+			
 	
-		}
 	}
 }
 

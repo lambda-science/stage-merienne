@@ -83,3 +83,11 @@
 
 * Croiser gene peak annotation w/ interactor list (small file)
 * Réunion avec Jonathan sur l'aspect code / package developpement et consignes pour améliorer le tout
+
+### Mercredi 27/11/2019
+**Matin**
+* Redo des rapport en pdf avec modif volcano plot (log base 10)
+* SeqMiner comparaison K27ac overtime chez Q140 et WT, screen
+* Todo: binom test répartition chaque cluster avant et après all gènes (mais pas recouvrement intégrale donc ?)
+* Réorganise les figures
+* Ontologie de chaques cluster d'interacteurs

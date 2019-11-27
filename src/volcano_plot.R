@@ -68,8 +68,8 @@ create_volcano <- function(dataset, gene_name_col, logFC_col, padj_col, logFC_tr
   # Plotting de notre volcano plot
   p1 <- ggplot(df_temp_adj, aes(y=-log10(df_temp_adj[[padj_col]]), x=df_temp_adj[[logFC_col]]) ) +
     geom_point(colour = df_temp_adj$colors) +
-    geom_hline(yintercept=-log(pval_treshold), linetype="dashed", color = "red") +
-    ggtitle(title) + xlab("log2 Fold Change") + ylab("-(P-value adjusted)")
+    geom_hline(yintercept=-log10(pval_treshold), linetype="dashed", color = "red") +
+    ggtitle(title) + xlab("log2 Fold Change") + ylab("-log10(P-value adjusted)")
   return(p1)
 }
 
