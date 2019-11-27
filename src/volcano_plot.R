@@ -52,6 +52,7 @@ create_volcano <- function(dataset, gene_name_col, logFC_col, padj_col, logFC_tr
   
   # Conversion des p-value en numeric
   dataset[padj_col] <- as.numeric(as.character(dataset[[padj_col]]))
+  dataset[logFC_col] <- as.numeric(as.character(dataset[[logFC_col]]))
   # Creation d'un dataframe temporaire contenant les colonnes d'intéret
   df_temp_adj <- select(dataset, gene_name_col, logFC_col, padj_col)
   df_temp_adj <- na.omit(df_temp_adj)
@@ -65,7 +66,7 @@ create_volcano <- function(dataset, gene_name_col, logFC_col, padj_col, logFC_tr
                                   df_temp_adj[[logFC_col]]>=logFC_treshold), up_color, "black"))
   }
   # Plotting de notre volcano plot
-  p1 <- ggplot(df_temp_adj, aes(y=-log(df_temp_adj[[padj_col]]), x=df_temp_adj[[logFC_col]]) ) +
+  p1 <- ggplot(df_temp_adj, aes(y=-log10(df_temp_adj[[padj_col]]), x=df_temp_adj[[logFC_col]]) ) +
     geom_point(colour = df_temp_adj$colors) +
     geom_hline(yintercept=-log(pval_treshold), linetype="dashed", color = "red") +
     ggtitle(title) + xlab("log2 Fold Change") + ylab("-(P-value adjusted)")
