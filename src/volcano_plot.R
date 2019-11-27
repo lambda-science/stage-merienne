@@ -54,6 +54,7 @@ create_volcano <- function(dataset, gene_name_col, logFC_col, padj_col, logFC_tr
   dataset[padj_col] <- as.numeric(as.character(dataset[[padj_col]]))
   # Creation d'un dataframe temporaire contenant les colonnes d'intéret
   df_temp_adj <- select(dataset, gene_name_col, logFC_col, padj_col)
+  df_temp_adj <- na.omit(df_temp_adj)
   # Création d'une colonne contenant une information de couleur selon le log2FC et pvalue.
   #
   df_temp_adj$colors <- "black"
