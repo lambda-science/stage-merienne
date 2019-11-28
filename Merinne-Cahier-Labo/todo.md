@@ -21,13 +21,13 @@
 
 ***
 
-* reconaissance colonne "log2" & "adjusted"  
+*V reconaissance colonne "log2" & "adjusted"  
     erreure custom "log2" non trouvé dans colonne p.e  
     doc  
 
-    grep "log2" sur colname df
-        donne des indexs utilisable sur colnames(df)[1]
-        enlever carrément le fichier colnames
+V    grep "log2" sur colname df
+V        donne des indexs utilisable sur colnames(df)[1]
+V        enlever carrément le fichier colnames
 
     remplacer proportion compte %<% juse par la fonction table qui sort directement un vecteur
     (vérifié que l'odre ne change pas ou gérer)
@@ -36,3 +36,5 @@ save plots in outputfold p.e
     vérifier repertoire, création repetoire
         sauvegarder plot + table as txt
         
+**TODO ANALYSE:**
+* Count number d'interacteurs dans chaque cluster (enrichissement) -> script Jonathan + récup des counts sur chaque cluster (export)

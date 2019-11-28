@@ -1,6 +1,7 @@
+library(dplyr)
 library(readxl)
 library(ggplot2)
-library(dplyr)
+source("src/ggplotImages.r")
 
 import_data_excel <- function(dataPath) {
   # Fonction pour importer des données d'un fichier excel
@@ -54,7 +55,7 @@ create_volcano <- function(dataset, gene_name_col, logFC_col, padj_col, logFC_tr
   dataset[padj_col] <- as.numeric(as.character(dataset[[padj_col]]))
   dataset[logFC_col] <- as.numeric(as.character(dataset[[logFC_col]]))
   # Creation d'un dataframe temporaire contenant les colonnes d'intéret
-  df_temp_adj <- select(dataset, gene_name_col, logFC_col, padj_col)
+  df_temp_adj <- dplyr::select(dataset, gene_name_col, logFC_col, padj_col)
   df_temp_adj <- na.omit(df_temp_adj)
   # Création d'une colonne contenant une information de couleur selon le log2FC et pvalue.
   #
@@ -87,7 +88,7 @@ retrieve_signif_genes <- function(dataset, gene_name_col, logFC_col, padj_col,
   
   dataset[padj_col] <- as.numeric(dataset[[padj_col]])
   # Creation d'un dataframe temporaire contenant les colonnes d'intéret
-  df_temp <- select(dataset, gene_name_col, logFC_col, padj_col)
+  df_temp <- dplyr::select(dataset, gene_name_col, logFC_col, padj_col)
   
   # Ajoute d'une colonne "régulation" donnant l'expression des gènes
   df_temp$regulation <- ifelse((df_temp[[padj_col]] <=pval_treshold &
@@ -99,4 +100,27 @@ retrieve_signif_genes <- function(dataset, gene_name_col, logFC_col, padj_col,
   updown_df <- df_temp[complete.cases(df_temp), ]
   updown_df <- updown_df[order(updown_df[logFC_col], decreasing = TRUE),]
   return(updown_df)
+}
+
+auto_volcano <- function(dataset, gene_col = "Gene name", lfc_threshold = 1, pval_threshold = 0.05){
+  # Fonction qui détecte et sauvegarde dans un dossier tout les volcano plot d'un dataset de RNA-seq 
+  # contenant des colonnes log2 et Adjusted pval (sur base de fichier de l'IGBMC). 
+  # Input:  dataset (dataframe): le dataframe contenant les fold change
+  #         gene_col (dataframe): le nom de la colonne des noms de gène dans le dataset
+  #         lfc_threshold (num): logFoldChange treshold
+  #         pval_threshold (num): p-val treshold
+  # Ouput:  Aucun, écrit des fichiers .png dans le dossier "autovolcano_output" à la racine du working directory
+  index_logFC <- grep("log2", colnames(dataset))
+  index_pval <- grep("Adj", colnames(dataset))
+  if (dir.exists(paths = "autovolcano_output") == F){
+    dir.create("autovolcano_output")
+  }
+  
+  for (i in seq(1:length(index_logFC))){
+    p1 <- create_volcano(dataset, gene_col, colnames(df)[index_logFC[i]], colnames(df)[index_pval[i]],
+                         logFC_treshold=lfc_threshold, pval_treshold=pval_threshold,
+                         title = substring(colnames(df)[index_logFC[i]], 5))
+
+    saveGGplotPng(paste("autovolcano_output/",i, ".png", sep=""), p1)
+  }
 }

@@ -1,7 +1,0 @@
-group1	group2	cluster	obs
-WT	6M	A	250
-WT	6M	B	179
-WT	6M	C	147
-WT	6M	D	316
-WT	6M	E	274
-WT	6M	F	157
