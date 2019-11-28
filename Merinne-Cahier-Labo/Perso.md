@@ -91,3 +91,23 @@
 * Todo: binom test répartition chaque cluster avant et après all gènes (mais pas recouvrement intégrale donc ?)
 * Réorganise les figures
 * Ontologie de chaques cluster d'interacteurs
+
+**Après-Midi**
+* test répartitien inégale dans les cluster
+* analyse de profil acétylation 
+* analyse read / gene (peak) chip-seq -> RNAseq over time
+
+### Jeudi 28/11/2019
+**Matin** 
+* sortie des density value et replotting des profiles sur R
+* Test de Kolmogorov-Smirnov pour déterminer profil différent
+* Création de l'auto volcano plot script
+
+**Après-midi**
+* Formation des comparaisons de profil en acetylation
+* Accès rapport de stage pour trouver un test statistique qui satisfait la demande
+* Possibilité de faire un échantillonnage (bootstrap) pour faire une simulation et comparé dans quel quartile notre subpop tombe
+* Test normalité QQplot -> non donc Mann Whitney paired test
+* TODO: Bootstrap approach
+* travail sur sampling
+* Fin travail sur sampling fonction qui fonctionne: difference signficative:
