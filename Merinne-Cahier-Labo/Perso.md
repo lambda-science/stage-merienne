@@ -110,7 +110,6 @@
 * Test normalité QQplot -> non donc Mann Whitney paired test
 * TODO: Bootstrap approach
 * travail sur sampling
-<<<<<<< HEAD
 * Fin travail sur sampling fonction qui fonctionne: difference signficative:
 
 ### Vendredi 29/11/2019
@@ -127,6 +126,3 @@
 **Après-midi**
 * Réunion générale projet
 * SeqMiner sur me3
-=======
-* Fin travail sur sampling fonction qui fonctionne: difference signficative:
->>>>>>> d34f5bdce431f486edaf8b36ab26050812cca7cf
