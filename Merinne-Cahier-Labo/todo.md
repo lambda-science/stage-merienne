@@ -38,7 +38,4 @@ save plots in outputfold p.e
         
 **TODO ANALYSE:**
 * Count number d'interacteurs dans chaque cluster (enrichissement) -> script Jonathan + récup des counts sur chaque cluster (export)
-<<<<<<< HEAD
 * code rapport & profile à envoyer ce week end
-=======
->>>>>>> d34f5bdce431f486edaf8b36ab26050812cca7cf

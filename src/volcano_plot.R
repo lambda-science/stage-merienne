@@ -115,20 +115,11 @@ auto_volcano <- function(dataset, gene_col = "Gene name", lfc_threshold = 1, pva
   if (dir.exists(paths = "autovolcano_output") == F){
     dir.create("autovolcano_output")
   }
-  
-<<<<<<< HEAD
   for (i in 1:length(index_logFC)){
-=======
-  for (i in seq(1:length(index_logFC))){
->>>>>>> d34f5bdce431f486edaf8b36ab26050812cca7cf
     p1 <- create_volcano(dataset, gene_col, colnames(df)[index_logFC[i]], colnames(df)[index_pval[i]],
                          logFC_treshold=lfc_threshold, pval_treshold=pval_threshold,
                          title = substring(colnames(df)[index_logFC[i]], 5))
 
     saveGGplotPng(paste("autovolcano_output/",i, ".png", sep=""), p1)
-<<<<<<< HEAD
-    saveGGplotSvg(paste("autovolcano_output/",i, ".svg", sep=""), p1)
-=======
->>>>>>> d34f5bdce431f486edaf8b36ab26050812cca7cf
   }
 }
