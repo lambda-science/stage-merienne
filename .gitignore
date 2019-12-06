@@ -1,4 +1,4 @@
-# Byte-compiled / optimized / DLL files
+-# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -146,9 +146,11 @@ vignettes/*.pdf
 .Renviron
 
 # corentin custom folder
-/data_example
-/raw
 /genelist
+.RData
+/raw
 /results
 /doc
+/autovolcano_output
+/data_example
 /rapport
